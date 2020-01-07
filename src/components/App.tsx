@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../stores';
-import userSlice from '../stores/user';
+import { RootState } from 'stores';
+import userSlice from 'stores/user';
 
 export default () => {
   const dispatch = useDispatch();
