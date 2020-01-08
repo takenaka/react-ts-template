@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface userState {
-  name: string;
-}
-const initialState: userState = {
+const initialState = {
   name: ''
 };
 
