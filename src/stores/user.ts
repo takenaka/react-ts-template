@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from 'stores';
 
 const initialState = {
