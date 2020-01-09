@@ -24,7 +24,9 @@ export default () => {
 
   return (
     <App>
-      <h1>{name}</h1>
+      <h1>Index</h1>
+
+      <h2>{name}</h2>
 
       <input value={name} type="text" onChange={onTextChange} />
 
@@ -35,7 +37,7 @@ export default () => {
 };
 
 const App = styled.div`
-  h1 {
+  h2 {
     color: gray;
     height: 2rem;
   }

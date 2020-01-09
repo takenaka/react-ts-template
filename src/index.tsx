@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'index.css';
-import App from 'components/App';
+import Index from 'components/pages/Index';
+import Count from 'components/pages/Count';
 import * as serviceWorker from 'serviceWorker';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import store from 'stores';
 import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <nav>
+        <Link style={{ marginRight: '8px' }} to="/">
+          index
+        </Link>
+        <Link to="/count">count</Link>
+      </nav>
+      <Switch>
+        <Route path="/" exact children={<Index />} />
+        <Route path="/count" children={<Count />} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
