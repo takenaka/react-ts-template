@@ -1,38 +1,35 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'stores';
-import userSlice from 'stores/user';
+import userSlice, { setRandomName } from 'stores/user';
 
 export default () => {
   const dispatch = useDispatch();
   const name = useSelector((state: RootState) => state.user.name);
-  const input = useRef<HTMLInputElement>(null);
 
-  const onTextChange = (value: string) => {
-    dispatch(userSlice.actions.setName(value));
+  const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target) {
+      dispatch(userSlice.actions.setName(e.target.value));
+    }
   };
 
-  const onButtonClicked = () => {
-    if (input.current === null) {
-      return;
-    }
-
+  const onClearClicked = () => {
     dispatch(userSlice.actions.clearName());
-    input.current.value = '';
+  };
+
+  const onRandomClicked = async () => {
+    dispatch(setRandomName());
   };
 
   return (
     <App>
       <h1>{name}</h1>
 
-      <input
-        ref={input}
-        type="text"
-        onChange={e => onTextChange(e.target.value)}
-      />
+      <input value={name} type="text" onChange={onTextChange} />
 
-      <button onClick={onButtonClicked}>clear</button>
+      <button onClick={onClearClicked}>clear</button>
+      <button onClick={onRandomClicked}>random</button>
     </App>
   );
 };
