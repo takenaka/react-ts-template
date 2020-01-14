@@ -1,14 +1,26 @@
-import { configureStore, combineReducers, Action } from '@reduxjs/toolkit';
+import {
+  configureStore,
+  combineReducers,
+  Action,
+  getDefaultMiddleware
+} from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
-import userSlice from 'stores/user';
+import userModule from 'stores/user';
+import counterModule from 'stores/counter';
 
-const reducer = combineReducers({
-  user: userSlice.reducer
+const rootReducer = combineReducers({
+  user: userModule.reducer,
+  counter: counterModule.reducer
 });
 
-const store = configureStore({ reducer });
+const middlewares = [...getDefaultMiddleware()];
 
-export type RootState = ReturnType<typeof reducer>;
-export type AppThunk = ThunkAction<void, RootState, null, Action<string>>;
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: middlewares
+});
 
 export default store;
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppThunk = ThunkAction<void, RootState, null, Action<string>>;

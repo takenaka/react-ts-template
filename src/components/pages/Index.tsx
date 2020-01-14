@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'stores';
-import userSlice, { setRandomName } from 'stores/user';
+import userModule, { setRandomName } from 'stores/user';
 
 export default () => {
   const dispatch = useDispatch();
@@ -10,12 +10,12 @@ export default () => {
 
   const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target) {
-      dispatch(userSlice.actions.setName(e.target.value));
+      dispatch(userModule.actions.setName(e.target.value));
     }
   };
 
   const onClearClicked = () => {
-    dispatch(userSlice.actions.clearName());
+    dispatch(userModule.actions.clearName());
   };
 
   const onRandomClicked = async () => {
