@@ -18,7 +18,7 @@ export default () => {
     dispatch(userModule.actions.clearName());
   };
 
-  const onRandomClicked = async () => {
+  const onRandomClicked = () => {
     dispatch(setRandomName());
   };
 

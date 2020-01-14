@@ -13,11 +13,11 @@ const rootReducer = combineReducers({
   counter: counterModule.reducer
 });
 
-const middlewares = [...getDefaultMiddleware()];
+const middleware = [...getDefaultMiddleware()];
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: middlewares
+  middleware: middleware
 });
 
 export default store;
