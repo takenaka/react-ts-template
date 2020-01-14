@@ -31,8 +31,7 @@ export const setRandomName = (): AppThunk => async dispatch => {
     } = await response.json();
 
     dispatch(slice.actions.setName(`${json.name}${json.surname}`));
-    return true;
   } catch {
-    return false;
+    return;
   }
 };
