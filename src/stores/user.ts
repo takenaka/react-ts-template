@@ -5,7 +5,7 @@ const initialState = {
   name: ''
 };
 
-const userModule = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -18,7 +18,7 @@ const userModule = createSlice({
   }
 });
 
-export default userModule;
+export default userSlice;
 
 export const setRandomName = (): AppThunk => async dispatch => {
   try {
@@ -30,7 +30,7 @@ export const setRandomName = (): AppThunk => async dispatch => {
       region: string;
     } = await response.json();
 
-    dispatch(userModule.actions.setName(`${json.name}${json.surname}`));
+    dispatch(userSlice.actions.setName(`${json.name}${json.surname}`));
   } catch {
     return;
   }

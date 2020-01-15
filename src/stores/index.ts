@@ -5,12 +5,12 @@ import {
   getDefaultMiddleware
 } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
-import userModule from 'stores/user';
-import counterModule from 'stores/counter';
+import userSlice from 'stores/user';
+import counterSlice from 'stores/counter';
 
 const rootReducer = combineReducers({
-  user: userModule.reducer,
-  counter: counterModule.reducer
+  user: userSlice.reducer,
+  counter: counterSlice.reducer
 });
 
 const middleware = [...getDefaultMiddleware()];
